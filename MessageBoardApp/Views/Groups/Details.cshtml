@@ -1,0 +1,8 @@
+@model MessageBoardApp.Models.Group;
+<h1>Details</h1>
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+@foreach(Message message in Model.Messages)
+{
+  <p>@Html.ActionLink("message.Header", "Details", "Messages", new { id = message.MessageId })</p>
+}
+<p>@Html.ActionLink("Edit", "Edit", new { id = Model.GroupId })</p>

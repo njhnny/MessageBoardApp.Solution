@@ -1,0 +1,9 @@
+@model MessageBoardApp.Models.Message;
+
+<h1>Delete this message?</h1>
+<h3>@Html.DisplayNameFor(model => model.Header): @Html.DisplayFor(model => model.Header)</h3>
+<br>
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete"/>
+}

@@ -1,0 +1,16 @@
+@{
+  ViewData["Title"] = "Message Details";
+}
+@model MessageBoardApp.Models.Message
+@using MessageBoardApp.Models
+
+<div class="jumbotron">
+  <h2>@Html.DisplayFor(model => model.Header)</h2>
+</div>
+
+<p>@Html.DisplayFor(model => model.Group.Name)</p>
+<p>@Html.DisplayFor(model => model.Person.Name)</p>
+<p>@Html.DisplayFor(model => model.Body)</p>
+
+@Html.ActionLink("Edit Message", "Edit")<br>
+@Html.ActionLink("Delete Message", "Delete")

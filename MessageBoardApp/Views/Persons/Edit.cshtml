@@ -1,0 +1,16 @@
+@{
+  ViewData["Title"] = "Edit User";
+}
+
+@model MessageBoardApp.Models.Person
+
+<div class="jumbotron">
+  <h2>Editing @Model.Name</h2>
+</div>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)
+
+  <input type="submit" value="Edit User" class="btn btn-dark" />
+}

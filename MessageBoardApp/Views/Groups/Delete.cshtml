@@ -1,0 +1,9 @@
+@model MessageBoardApp.Models.Group;
+
+<h1>Delete this group?</h1>
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<br>
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete"/>
+}

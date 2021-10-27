@@ -1,0 +1,25 @@
+@{
+  ViewData["Title"] = "Create Message";
+}
+
+@model MessageBoardApp.Models.Message
+
+<div class="jumbotron">
+  <h2>Edit message</h2>
+</div>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Header)
+  @Html.TextBoxFor(model => model.Header)
+
+  @Html.LabelFor(model => model.Body)
+  @Html.TextBoxFor(model => model.Body)
+
+  @Html.Label("Select Group")
+  @Html.DropDownList("GroupId")
+
+  @Html.Label("Select User")
+  @Html.DropDownList("PersonId")
+
+  <input type="submit" value="Add new message" class="btn btn-dark" />
+}

@@ -42,7 +42,7 @@ namespace MessageBoardApp.Controllers
     {
       var groups = Group.GetAllGroups();
       ViewBag.GroupId = new SelectList(groups, "GroupId", "Name");
-
+      ViewBag.CurrentUser = CurrentUser.GetCurrentUser();
       Message message = Message.GetDetails(id);
       return View(message);
     }
@@ -57,6 +57,7 @@ namespace MessageBoardApp.Controllers
     public ActionResult Delete(int id)
     {
       Message message = Message.GetDetails(id);
+      ViewBag.CurrentUser = CurrentUser.GetCurrentUser();
       return View(message);
     }
 

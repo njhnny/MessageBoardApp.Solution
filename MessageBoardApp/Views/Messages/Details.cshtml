@@ -12,5 +12,5 @@
 <p>By: @ViewBag.Person.Name</p>
 <p>@Html.DisplayFor(model => model.Body)</p>
 
-@Html.ActionLink("Edit Message", "Edit")<br>
-@Html.ActionLink("Delete Message", "Delete")
+@Html.ActionLink("Edit Message", "Edit", new { id = @Model.MessageId })<br>
+@Html.ActionLink("Delete Message", "Delete", new { id = @Model.MessageId })

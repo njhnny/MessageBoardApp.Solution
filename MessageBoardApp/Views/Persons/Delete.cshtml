@@ -1,9 +1,15 @@
 @model MessageBoardApp.Models.Person;
-
-<h1>Delete this user?</h1>
-<h3>@Html.DisplayNameFor(model => model.Name):  @Html.DisplayFor(model => model.Name)</h3>
-<br>
-@using (Html.BeginForm())
+@if (ViewBag.CurrentUser.PersonId == Model.PersonId)
 {
-  <input type="submit" value="Delete"/>
+  <h1>Delete this user?</h1>
+  <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+  <br>
+  @using (Html.BeginForm())
+  {
+    <input type="submit" value="Delete" />
+  }
+}
+else
+{
+  <p>You are not authorized to perform this action.</p>
 }

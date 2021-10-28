@@ -4,22 +4,29 @@
 
 @model MessageBoardApp.Models.Message
 
-<div class="jumbotron">
-  <h2>Edit message</h2>
-</div>
-@using (Html.BeginForm())
+@if (ViewBag.CurrentUser.PersonId == Model.PersonId)
 {
-  @Html.LabelFor(model => model.Header)
-  @Html.TextBoxFor(model => model.Header)
+  <div class="jumbotron">
+  <h2>Edit message</h2>
+  </div>
+  @using (Html.BeginForm())
+  {
+    @Html.HiddenFor(model => model.MessageId)
+    @Html.HiddenFor(model => model.PersonId)
 
-  @Html.LabelFor(model => model.Body)
-  @Html.TextBoxFor(model => model.Body)
+    @Html.LabelFor(model => model.Header)
+    @Html.EditorFor(model => model.Header)
 
-  @Html.Label("Select Group")
-  @Html.DropDownList("GroupId")
+    @Html.LabelFor(model => model.Body)
+    @Html.EditorFor(model => model.Body)
 
-  @Html.Label("Select User")
-  @Html.DropDownList("PersonId")
+    @Html.Label("Select Group")
+    @Html.DropDownList("GroupId")
 
-  <input type="submit" value="Add new message" class="btn btn-dark" />
+    <input type="submit" value="Edit" class="btn btn-dark" />
+  }
+}
+else
+{
+  <p>You are not authorized to perform this action.</p>
 }

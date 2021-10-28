@@ -12,6 +12,8 @@ namespace MessageBoardApp.Controllers
     public ActionResult Index()
     {
       var allPersons = Person.GetAllPersons();
+      var persons = Person.GetAllPersons();
+      ViewBag.PersonId = new SelectList(persons, "PersonId", "Name");
       return View(allPersons);
     }
 
@@ -30,6 +32,7 @@ namespace MessageBoardApp.Controllers
     public ActionResult Details(int id)
     {
       Person person = Person.GetDetails(id);
+      ViewBag.Messages = Message.GetAllMessages();
       return View(person);
     }
 
@@ -42,7 +45,7 @@ namespace MessageBoardApp.Controllers
     [HttpPost]
     public ActionResult Edit(Person person)
     {
-      Person.Post(person);
+      Person.Patch(person);
       return RedirectToAction("Index");
     }
 

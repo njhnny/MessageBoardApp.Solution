@@ -17,7 +17,7 @@ namespace MessageBoardApp.Models
     public string Header { get; set; }
     public string Body { get; set; }
     public DateTime PostDate { get; set; }
-    public string PersonId { get; set; }
+    public int PersonId { get; set; }
     public int GroupId { get; set; }
     public virtual Group Group { get; set; }
     public virtual Person Person { get; set; }
@@ -39,7 +39,7 @@ namespace MessageBoardApp.Models
 
       JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
       Message message = JsonConvert.DeserializeObject<Message>(jsonResponse.ToString());
-
+      
       return message;
     }
 

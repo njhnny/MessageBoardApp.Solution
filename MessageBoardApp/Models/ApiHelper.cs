@@ -45,6 +45,14 @@ namespace MessageBoardApp.Models
       return response.Content;
     }
 
+    public static async Task<string> GetCurrentUser()
+    {
+      RestClient client = new RestClient("http://localhost:5000/api");
+      RestRequest request = new RestRequest($"currentuser/1", Method.GET);
+      var response = await client.ExecuteTaskAsync(request);
+      return response.Content;
+    }
+
     public static async Task<string> GetGroup(int id)
     {
       RestClient client = new RestClient("http://localhost:5000/api");
@@ -91,6 +99,14 @@ namespace MessageBoardApp.Models
       RestRequest request = new RestRequest($"persons/{id}", Method.PATCH);
       request.AddHeader("Content-Type", "application/json");
       request.AddJsonBody(newPerson);
+      var response = await client.ExecuteTaskAsync(request);
+    }
+    public static async Task PatchCurrentUser(int id, string newCurrentUser)
+    {
+      RestClient client = new RestClient("http://localhost:5000/api");
+      RestRequest request = new RestRequest($"currentuser/{id}", Method.PATCH);
+      request.AddHeader("Content-Type", "application/json");
+      request.AddJsonBody(newCurrentUser);
       var response = await client.ExecuteTaskAsync(request);
     }
     public static async Task PatchGroup(int id, string newGroup)

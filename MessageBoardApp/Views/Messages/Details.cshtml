@@ -8,8 +8,8 @@
   <h2>@Html.DisplayFor(model => model.Header)</h2>
 </div>
 
-<p>@Html.DisplayFor(model => model.Group.Name)</p>
-<p>@Html.DisplayFor(model => model.Person.Name)</p>
+<p>Posted in: @ViewBag.Group.Name</p>
+<p>By: @ViewBag.Person.Name</p>
 <p>@Html.DisplayFor(model => model.Body)</p>
 
 @Html.ActionLink("Edit Message", "Edit")<br>

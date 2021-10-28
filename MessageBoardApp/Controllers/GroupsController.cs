@@ -31,6 +31,7 @@ namespace MessageBoardApp.Controllers
     public ActionResult Details(int id)
     {
       var group = Group.GetDetails(id);
+      ViewBag.Messages = Message.GetAllMessages();
       return View(group);
     }
 

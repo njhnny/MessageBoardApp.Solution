@@ -2,10 +2,22 @@
   ViewData["Title"] = "User Details";
 }
 @model MessageBoardApp.Models.Person
+@using MessageBoardApp.Models
+
 
 <div class="jumbotron">
   <h2>@Html.DisplayFor(model => model.Name)</h2>
 </div>
-
+<ul>
+@foreach (Message message in ViewBag.Messages)
+{
+  @if (Model.PersonId == message.PersonId)
+  {
+  <li>
+    @message.Header - @message.Body
+  </li>
+  }
+}
+</ul>
 @Html.ActionLink("Edit User", "Edit")<br>
 @Html.ActionLink("Delete User", "Delete")

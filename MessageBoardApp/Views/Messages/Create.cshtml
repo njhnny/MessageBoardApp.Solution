@@ -1,5 +1,6 @@
 @{
   ViewData["Title"] = "Create Message";
+  int personId = ViewBag.CurrentUser.PersonId;
 }
 
 @model MessageBoardApp.Models.Message
@@ -18,8 +19,7 @@
   @Html.LabelFor(model => model.Group)
   @Html.DropDownList("GroupId")
 
-  @Html.LabelFor(model => model.Person)
-  @Html.DropDownList("PersonId")
+  <input data-val="true" data-val-required="The PersonId field is required." id="PersonId" name="PersonId" type="hidden" value="@personId">
 
   <input type="submit" value="Add new message" class="btn btn-dark" />
 }

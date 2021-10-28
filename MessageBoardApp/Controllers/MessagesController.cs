@@ -19,8 +19,7 @@ namespace MessageBoardApp.Controllers
     {
       var groups = Group.GetAllGroups();
       ViewBag.GroupId = new SelectList(groups, "GroupId", "Name");
-      var persons = Person.GetAllPersons();
-      ViewBag.PersonId = new SelectList(persons, "PersonId", "Name");
+      ViewBag.CurrentUser = CurrentUser.GetCurrentUser();
       return View();
     }
 
@@ -34,6 +33,8 @@ namespace MessageBoardApp.Controllers
     public ActionResult Details(int id)
     {
       Message message = Message.GetDetails(id);
+      ViewBag.Person = Person.GetDetails(message.PersonId);
+      ViewBag.Group = Group.GetDetails(message.GroupId);
       return View(message);
     }
 
